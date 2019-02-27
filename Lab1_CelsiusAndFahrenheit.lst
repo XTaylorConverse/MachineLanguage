@@ -1,0 +1,306 @@
+     1                                 %line 1+1 ..\winONLY.inc
+     2                                 
+     3                                 %line 98+1 ..\winONLY.inc
+     4                                 
+     5                                 
+     6                                 
+     7                                 
+     8                                 
+     9                                 
+    10                                 
+    11                                 
+    12                                 
+    13                                 
+    14                                 
+    15                                 
+    16                                 
+    17                                 
+    18                                 
+    19                                 %line 117+1 ..\winONLY.inc
+    20                                 
+    21                                 %line 122+1 ..\winONLY.inc
+    22                                 
+    23                                 %line 127+1 ..\winONLY.inc
+    24                                 
+    25                                 %line 132+1 ..\winONLY.inc
+    26                                 
+    27                                 %line 136+1 ..\winONLY.inc
+    28                                 
+    29                                 %line 140+1 ..\winONLY.inc
+    30                                 
+    31                                 %line 143+1 ..\winONLY.inc
+    32                                 
+    33                                 %line 151+1 ..\winONLY.inc
+    34                                 
+    35                                 %line 162+1 ..\winONLY.inc
+    36                                 
+    37                                 %line 167+1 ..\winONLY.inc
+    38                                 
+    39                                 %line 3+1 ..\My_Macros.inc
+    40                                 
+    41                                 
+    42                                 
+    43                                 
+    44                                 
+    45                                 
+    46                                 
+    47                                 
+    48                                 NEWLINE equ 0x0a
+    49                                 CR equ 0x0d
+    50                                 SPACE equ 0x20
+    51                                 TAB equ 0x09
+    52                                 NULL equ 0x00
+    53                                 TRUE equ 0x01
+    54                                 FALSE equ 0xff
+    55                                 
+    56                                 
+    57                                 EOF equ -1
+    58                                 
+    59                                 
+    60                                 
+    61                                 
+    62                                 
+    63                                 
+    64                                 
+    65                                 
+    66                                 
+    67                                 
+    68                                 PARM5 equ 32
+    69                                 
+    70                                 
+    71                                 PARM6 equ 40
+    72                                 
+    73                                 PARM7 equ 48
+    74                                 
+    75                                 PARM8 equ 56
+    76                                 
+    77                                 PARM9 equ 64
+    78                                 
+    79                                 PARM10 equ 72
+    80                                 
+    81                                 PARM11 equ 80
+    82                                 
+    83                                 PARM12 equ 88
+    84                                 
+    85                                 
+    86                                 %line 61+1 ..\My_Macros.inc
+    87                                 
+    88                                 %line 72+1 ..\My_Macros.inc
+    89                                 
+    90                                 
+    91                                 %line 84+1 ..\My_Macros.inc
+    92                                 
+    93                                 
+    94                                 %line 96+1 ..\My_Macros.inc
+    95                                 
+    96                                 %line 2+1 Lab1_CelsiusAndFahrenheit.asm
+    97                                 
+    98                                 
+    99                                 
+   100                                 
+   101                                 
+   102                                 
+   103                                 
+   104                                 [segment .data]
+   105 00000000 0000000000000000        Celsius dq 0
+   106 00000008 6400000000000000        Fahrenheit dq 100
+   107 00000010 0000000000000000        Conversion dq 0
+   108 00000018 2000000000000000        Thirtytwo dq 32
+   109 00000020 0500000000000000        Five dq 5
+   110 00000028 0900000000000000        Nine dq 9
+   111                                 
+   112                                 
+   113 00000030 596F75722063757272-     Yolo db "Your current number is %i",0x0a,0
+   114 00000030 656E74206E756D6265-
+   115 00000030 722069732025690A00 
+   116                                 
+   117                                 
+   118                                 %line 23+1 Lab1_CelsiusAndFahrenheit.asm
+   119 0000004B 46616872656E686569-     lineOne db "Fahrenheit TO Celsius Conversion", 0x0a,"%i degrees F = %i degrees C", 0x0a,"By:    Taylor Converse",0x0a,0x0a,0x0a,0
+   120 0000004B 7420544F2043656C73-
+   121 0000004B 69757320436F6E7665-
+   122 0000004B 7273696F6E0A256920-
+   123 0000004B 646567726565732046-
+   124 0000004B 203D20256920646567-
+   125 0000004B 7265657320430A4279-
+   126 0000004B 3A202020205461796C-
+   127 0000004B 6F7220436F6E766572-
+   128 0000004B 73650A0A0A00       
+   129                                 %line 26+1 Lab1_CelsiusAndFahrenheit.asm
+   130 000000A2 0A43656C7369757320-     lineTwo db 0x0a,"Celsius TO Fahrenheit Conversion", 0x0a,"%i degrees C = %i degrees F", 0x0a,"By:    Taylor Converse",0x0a,0
+   131 000000A2 544F2046616872656E-
+   132 000000A2 6865697420436F6E76-
+   133 000000A2 657273696F6E0A2569-
+   134 000000A2 206465677265657320-
+   135 000000A2 43203D202569206465-
+   136 000000A2 677265657320460A42-
+   137 000000A2 793A20202020546179-
+   138 000000A2 6C6F7220436F6E7665-
+   139 000000A2 7273650A00         
+   140                                 
+   141                                 [segment .text]
+   142                                 [global main]
+   143                                 [extern printf]
+   144                                 
+   145                                 main:
+   146 00000000 55                      push rbp
+   147 00000001 4889E5                  mov rbp, rsp
+   148                                 
+   149 00000004 4883EC28                sub rsp, 40
+   150                                 
+   151                                 
+   152                                 
+   153                                 
+   154                                 
+   155                                 
+   156                                 
+   157                                 
+   158                                 %line 44+0 Lab1_CelsiusAndFahrenheit.asm
+   159                                 
+   160 00000008 53                      push rbx
+   161                                 
+   162                                 
+   163                                 
+   164 00000009 56                      push rsi
+   165                                 
+   166                                 
+   167                                 
+   168 0000000A 57                      push rdi
+   169                                 
+   170                                 
+   171                                 
+   172 0000000B 4152                    push r10
+   173                                 
+   174                                 
+   175                                 
+   176 0000000D 4153                    push r11
+   177                                 
+   178                                 
+   179                                 
+   180 0000000F 4154                    push r12
+   181                                 
+   182                                 
+   183                                 
+   184 00000011 4155                    push r13
+   185                                 
+   186                                 
+   187                                 
+   188 00000013 4156                    push r14
+   189                                 
+   190                                 
+   191                                 
+   192 00000015 4157                    push r15
+   193                                 
+   194                                 
+   195                                 
+   196                                 
+   197                                 %line 45+1 Lab1_CelsiusAndFahrenheit.asm
+   198                                 
+   199 00000017 4831C0                  xor rax,rax
+   200 0000001A 4831D2                  xor rdx,rdx
+   201                                 
+   202                                 
+   203                                 
+   204                                 
+   205 0000001D 488B0425[00000000]      mov rax,[Fahrenheit]
+   206 00000025 482B0425[00000000]      sub rax,[Thirtytwo]
+   207                                 
+   208                                 
+   209 0000002D 4C8B2425[00000000]      mov r12,[Five]
+   210 00000035 49F7E4                  mul r12
+   211                                 
+   212                                 
+   213 00000038 4C8B2425[00000000]      mov r12,[Nine]
+   214 00000040 49F7F4                  div r12
+   215                                 
+   216                                 
+   217                                 
+   218                                 
+   219                                 
+   220                                 
+   221                                 
+   222                                 
+   223 00000043 488D0C25[00000000]      lea rcx,[lineOne]
+   224 0000004B 488B1425[00000000]      mov rdx,[Fahrenheit]
+   225 00000053 4989C0                  mov r8,rax
+   226 00000056 E8(F6FFFFFF)            call printf
+   227                                 
+   228 0000005B 4831C0                  xor rax,rax
+   229 0000005E 4831C9                  xor rcx,rcx
+   230 00000061 4831D2                  xor rdx,rdx
+   231 00000064 4D31C0                  xor r8,r8
+   232                                 
+   233                                 
+   234                                 
+   235                                 
+   236                                 
+   237                                 
+   238 00000067 66B86400                mov ax, 100
+   239 0000006B 66890425[00000000]      mov [Celsius],ax
+   240 00000073 66B81E00                mov ax, 30
+   241 00000077 66890425[00000000]      mov [Fahrenheit],ax
+   242                                 
+   243                                 
+   244 0000007F 488B0425[00000000]      mov rax,[Celsius]
+   245 00000087 4C8B2425[00000000]      mov r12,[Nine]
+   246 0000008F 49F7E4                  mul r12
+   247                                 
+   248                                 
+   249 00000092 4C8B2425[00000000]      mov r12,[Five]
+   250 0000009A 49F7F4                  div r12
+   251                                 
+   252                                 
+   253 0000009D 48030425[00000000]      add rax,[Thirtytwo]
+   254                                 
+   255                                 
+   256 000000A5 488D0C25[00000000]      lea rcx,[lineTwo]
+   257 000000AD 488B1425[00000000]      mov rdx,[Celsius]
+   258 000000B5 4989C0                  mov r8,rax
+   259 000000B8 E8(F6FFFFFF)            call printf
+   260                                 
+   261                                 
+   262                                 
+   263                                 
+   264                                 %line 110+0 Lab1_CelsiusAndFahrenheit.asm
+   265 000000BD 415F                    pop r15
+   266                                 
+   267                                 
+   268                                 
+   269 000000BF 415E                    pop r14
+   270                                 
+   271                                 
+   272                                 
+   273 000000C1 415D                    pop r13
+   274                                 
+   275                                 
+   276                                 
+   277 000000C3 415C                    pop r12
+   278                                 
+   279                                 
+   280                                 
+   281 000000C5 415B                    pop r11
+   282                                 
+   283                                 
+   284                                 
+   285 000000C7 415A                    pop r10
+   286                                 
+   287                                 
+   288                                 
+   289 000000C9 5F                      pop rdi
+   290                                 
+   291                                 
+   292                                 
+   293 000000CA 5E                      pop rsi
+   294                                 
+   295                                 
+   296                                 
+   297 000000CB 5B                      pop rbx
+   298                                 
+   299                                 
+   300                                 
+   301                                 %line 111+1 Lab1_CelsiusAndFahrenheit.asm
+   302                                 
+   303 000000CC 4883C428                add rsp,40
+   304 000000D0 4831C9                  xor rcx,rcx
+   305 000000D3 C9                      leave
+   306 000000D4 C3                      ret
